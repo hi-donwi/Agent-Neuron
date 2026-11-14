@@ -134,6 +134,16 @@ series. The bundled server version is inherited from Ollama rather than pinned b
 Agent-Neuron, it ran only on one host, and the model is F16. This does not finish Spike A or
 validate the two-host, pinned-engine matrix.
 
+### Sampled process RSS estimate
+
+A separate three-run check sampled this server process's RSS every 50 ms from startup
+through request completion. The highest observed samples were 389,312 KiB median
+(384,912–393,168) at 2k, and 438,288 KiB median (418,352–439,152) at 4k, approximately
+380 MiB (376–384) and 428 MiB (409–429). These are sampled peaks, not guaranteed maxima;
+short-lived spikes between polls may be missed. The `ps` polling itself adds CPU overhead,
+so do not use these runs' throughput numbers for comparison. This estimate is specific to
+one 135M F16 model, one server slot, and the Ollama-bundled build on one host.
+
 Re-run the same local tag with:
 
 ```bash
