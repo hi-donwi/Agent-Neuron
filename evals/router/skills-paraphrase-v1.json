@@ -1,0 +1,553 @@
+{
+  "version": 1,
+  "name": "skills-paraphrase-v1",
+  "audience": "public",
+  "licence": "Apache-2.0",
+  "provenance": {
+    "kind": "synthetic",
+    "author": "AI coding agent (Claude Fable 5.2), not yet reviewed by a human",
+    "written": "2026-11-14",
+    "derived_from": {
+      "repository": "https://github.com/hi-donwi/Agent-Skills",
+      "commit": "70eaef555bf907b1a105c0f0e828300541637b50",
+      "file": "tests/scenarios.json",
+      "licence": "MIT"
+    }
+  },
+  "scenarios": [
+    {
+      "id": "scenario-api-design-1",
+      "query": "decide what a new account sign-up call accepts and returns before writing the handler, and reject malformed payloads at the edge",
+      "expected_skill": "api-design",
+      "pack": "core"
+    },
+    {
+      "id": "scenario-cicd-1",
+      "query": "every proposed change should have its formatting and its suite verified on a hosted runner before anyone can merge it",
+      "expected_skill": "ci-cd",
+      "pack": "core"
+    },
+    {
+      "id": "scenario-code-review-1",
+      "query": "take a critical look at my colleague's patch and tell me what could break or is missing before it lands",
+      "expected_skill": "code-review",
+      "pack": "core"
+    },
+    {
+      "id": "scenario-debugging-1",
+      "query": "the consumer process keeps falling over on a missing value and I cannot work out why; help me find the root cause",
+      "expected_skill": "debugging",
+      "pack": "core"
+    },
+    {
+      "id": "scenario-dep-audit-1",
+      "query": "check whether the libraries we pull in have known CVEs and bump the stale ones",
+      "expected_skill": "dependency-audit",
+      "pack": "core"
+    },
+    {
+      "id": "scenario-adr-1",
+      "query": "write down why we chose to keep login state in Redis, with the alternatives we rejected, so future maintainers understand the choice",
+      "expected_skill": "documentation-and-adrs",
+      "pack": "core"
+    },
+    {
+      "id": "scenario-git-workflow-1",
+      "query": "my topic line of work diverged from main and now has clashing edits; untangle it and split the history into small tidy changes",
+      "expected_skill": "git-workflow",
+      "pack": "core"
+    },
+    {
+      "id": "scenario-observability-1",
+      "query": "we cannot follow a single request across services in production; make each hop emit machine-readable records that share one identifier",
+      "expected_skill": "observability",
+      "pack": "core"
+    },
+    {
+      "id": "scenario-security-1",
+      "query": "check that hostile visitors cannot smuggle database commands or script tags through anything they type into our app",
+      "expected_skill": "security-hardening",
+      "pack": "core"
+    },
+    {
+      "id": "scenario-tdd-1",
+      "query": "start with failing checks that describe how the loan interest function should behave, then write the code to make them pass",
+      "expected_skill": "test-driven-development",
+      "pack": "core"
+    },
+    {
+      "id": "scenario-handoff-1",
+      "query": "I am about to stop for the day; write up where things stand and what is still unfinished so whoever picks this up next can carry on",
+      "expected_skill": "agent-handoff",
+      "pack": "agent"
+    },
+    {
+      "id": "scenario-a11y-1",
+      "query": "check whether blind users and people who cannot use a mouse can actually operate our pages",
+      "expected_skill": "accessibility-audit",
+      "pack": "web"
+    },
+    {
+      "id": "scenario-design-tokens-1",
+      "query": "give the stylesheet named values for surfaces and text so the app can switch to a night appearance without hard-coded hex codes",
+      "expected_skill": "design-tokens",
+      "pack": "web"
+    },
+    {
+      "id": "scenario-responsive-1",
+      "query": "the admin screen overflows on phones; make its panels rearrange and shrink to fit narrow screens",
+      "expected_skill": "responsive-layout",
+      "pack": "web"
+    },
+    {
+      "id": "scenario-uidl-1",
+      "query": "describe a listing screen with search criteria as a UIDL file and check that it is well-formed before the app draws it",
+      "expected_skill": "uidl-runtime",
+      "pack": "web"
+    },
+    {
+      "id": "scenario-web-perf-1",
+      "query": "our home page takes ages before the main image shows up because JavaScript holds up the first paint; make it appear faster",
+      "expected_skill": "web-perf",
+      "pack": "web"
+    },
+    {
+      "id": "scenario-playwright-1",
+      "query": "automate a real Chromium session that walks through buying a product and confirms the card dialog appears",
+      "expected_skill": "webapp-testing",
+      "pack": "web"
+    },
+    {
+      "id": "scenario-quarkus-db-1",
+      "query": "in our Quarkus backend, add a persistent class for orders and change the live Postgres structure without downtime",
+      "expected_skill": "quarkus-persistence",
+      "pack": "java"
+    },
+    {
+      "id": "scenario-quarkus-sec-1",
+      "query": "in a Quarkus app, restrict each route to the right kind of user and store credentials so a leaked dump cannot be reversed",
+      "expected_skill": "quarkus-security",
+      "pack": "java"
+    },
+    {
+      "id": "scenario-bulk-export-1",
+      "query": "let users download a million-row spreadsheet from the Java backend without the heap blowing up",
+      "expected_skill": "bulk-reporting-export",
+      "pack": "java"
+    },
+    {
+      "id": "business-tenant-direct",
+      "query": "several customer companies share one database; guarantee each company only ever sees its own rows",
+      "expected_skill": "saas-multitenancy",
+      "pack": "core"
+    },
+    {
+      "id": "business-tenant-paraphrase",
+      "query": "a reused database session sometimes shows one client's data to another client's users; stop that leak",
+      "expected_skill": "saas-multitenancy",
+      "pack": "core"
+    },
+    {
+      "id": "business-tenant-boundary",
+      "query": "which confidential remarks about a customer may go into the briefing material every teammate's assistant loads, and who should be able to read it",
+      "expected_skill": "context-privacy",
+      "pack": "agent"
+    },
+    {
+      "id": "business-tenant-failure",
+      "query": "a queue consumer believes whatever company identifier arrives in the message and ends up loading another customer's rows",
+      "expected_skill": "saas-multitenancy",
+      "pack": "core"
+    },
+    {
+      "id": "business-billing-direct",
+      "query": "charge customers every month for their plan plus what they consumed, adjust mid-cycle changes fairly, and chase failed card payments",
+      "expected_skill": "saas-billing",
+      "pack": "core"
+    },
+    {
+      "id": "business-billing-paraphrase",
+      "query": "when a team adds users or moves to a higher plan, work out what they owe and which paid capabilities unlock",
+      "expected_skill": "saas-billing",
+      "pack": "core"
+    },
+    {
+      "id": "business-billing-boundary",
+      "query": "write a very large workbook to the client row by row from the Java server so it never holds the whole thing in RAM",
+      "expected_skill": "bulk-reporting-export",
+      "pack": "java"
+    },
+    {
+      "id": "business-billing-failure",
+      "query": "the payment processor notifies us twice and in the wrong sequence after a customer cancels their plan, and they get charged again",
+      "expected_skill": "saas-billing",
+      "pack": "core"
+    },
+    {
+      "id": "business-flags-direct",
+      "query": "ship new functionality dark, turn it on for a stable slice of users, and be able to switch it off instantly if it misbehaves",
+      "expected_skill": "feature-flags",
+      "pack": "core"
+    },
+    {
+      "id": "business-flags-paraphrase",
+      "query": "make sure the same customers keep seeing the experimental behaviour between visits, and clean up the old conditionals once it is on for everyone",
+      "expected_skill": "feature-flags",
+      "pack": "core"
+    },
+    {
+      "id": "business-flags-boundary",
+      "query": "customers pay monthly for what they consume and must be invoiced a partial amount when they move to a bigger package mid-month",
+      "expected_skill": "saas-billing",
+      "pack": "core"
+    },
+    {
+      "id": "business-flags-failure",
+      "query": "the service that tells us which functionality is enabled is down, and the emergency off setting still carries last week's audience",
+      "expected_skill": "feature-flags",
+      "pack": "core"
+    },
+    {
+      "id": "business-analytics-direct",
+      "query": "decide which user actions to record and how to name them so we can see where newcomers drop off and who keeps coming back",
+      "expected_skill": "product-analytics",
+      "pack": "core"
+    },
+    {
+      "id": "business-analytics-paraphrase",
+      "query": "work out what share of sign-ups reach first value and how many leave, without counting the same click twice",
+      "expected_skill": "product-analytics",
+      "pack": "core"
+    },
+    {
+      "id": "business-analytics-boundary",
+      "query": "instrument the running system so operators get paged when error rates climb and can follow a request through each service",
+      "expected_skill": "observability",
+      "pack": "core"
+    },
+    {
+      "id": "business-analytics-failure",
+      "query": "our usage tracking stores personal contact details and counts the same purchase step twice, so the drop-off chart is wrong",
+      "expected_skill": "product-analytics",
+      "pack": "core"
+    },
+    {
+      "id": "business-onboarding-direct",
+      "query": "when a new customer company signs up, set up its workspace; later be able to freeze it and eventually remove it cleanly",
+      "expected_skill": "saas-onboarding",
+      "pack": "core"
+    },
+    {
+      "id": "business-onboarding-paraphrase",
+      "query": "setting up a customer's account stopped halfway; continue from where it broke, and tear the account down only once the legal waiting time has passed",
+      "expected_skill": "saas-onboarding",
+      "pack": "core"
+    },
+    {
+      "id": "business-onboarding-boundary",
+      "query": "I just joined this project and have never seen its source; show me where execution starts and how the main pieces fit together",
+      "expected_skill": "codebase-onboarding",
+      "pack": "core"
+    },
+    {
+      "id": "business-onboarding-failure",
+      "query": "a customer account is being torn down while its setup is still being re-attempted and the lawyers have asked us to keep its data",
+      "expected_skill": "saas-onboarding",
+      "pack": "core"
+    },
+    {
+      "id": "business-identity-direct",
+      "query": "let enterprise customers sign in through their corporate login with a second factor, decide who may do what, and cut people off when they leave the company",
+      "expected_skill": "identity-access-management",
+      "pack": "core"
+    },
+    {
+      "id": "business-identity-paraphrase",
+      "query": "an employee deleted from the customer's corporate user list can still act in our app; make their rights end and log them out everywhere",
+      "expected_skill": "identity-access-management",
+      "pack": "core"
+    },
+    {
+      "id": "business-identity-boundary",
+      "query": "in Quarkus, annotate which kinds of user may call each handler and store passphrases with a slow memory-hard digest",
+      "expected_skill": "quarkus-security",
+      "pack": "java"
+    },
+    {
+      "id": "business-identity-failure",
+      "query": "signing in through the corporate provider silently merges users who share a mailbox address, and removed administrators stay logged in",
+      "expected_skill": "identity-access-management",
+      "pack": "core"
+    },
+    {
+      "id": "business-membership-direct",
+      "query": "let people be asked to join a club, lapse when their term ends, extend it, receive perks, and hand the top role to someone else",
+      "expected_skill": "membership-management",
+      "pack": "core"
+    },
+    {
+      "id": "business-membership-paraphrase",
+      "query": "keep track of who belongs to the society, which level they qualify for, when they enrolled, and pausing or restoring their standing",
+      "expected_skill": "membership-management",
+      "pack": "core"
+    },
+    {
+      "id": "business-membership-boundary",
+      "query": "make the database itself refuse to return another customer company's rows, and keep each company's uploaded files apart",
+      "expected_skill": "saas-multitenancy",
+      "pack": "core"
+    },
+    {
+      "id": "business-membership-failure",
+      "query": "reusing an old join link grants a higher role than intended, and removing two admins at once leaves the group with nobody in charge",
+      "expected_skill": "membership-management",
+      "pack": "core"
+    },
+    {
+      "id": "business-jobs-direct",
+      "query": "run slow work outside the request, make sure it is attempted again on failure, and park items that keep failing so we can re-run them later",
+      "expected_skill": "background-jobs",
+      "pack": "core"
+    },
+    {
+      "id": "business-jobs-paraphrase",
+      "query": "nightly work that was interrupted when a process died must pick up again without emailing the customer twice",
+      "expected_skill": "background-jobs",
+      "pack": "core"
+    },
+    {
+      "id": "business-jobs-boundary",
+      "query": "block merging until a hosted runner has compiled the change and confirmed the style rules pass",
+      "expected_skill": "ci-cd",
+      "pack": "core"
+    },
+    {
+      "id": "business-jobs-failure",
+      "query": "a queue consumer died right after calling the payment provider but before marking the item finished, so the item ran again",
+      "expected_skill": "background-jobs",
+      "pack": "core"
+    },
+    {
+      "id": "business-webhooks-direct",
+      "query": "push event notifications to URLs our customers register, prove the messages really come from us, and let them be sent again on request",
+      "expected_skill": "webhook-integrations",
+      "pack": "core"
+    },
+    {
+      "id": "business-webhooks-paraphrase",
+      "query": "call third-party callback addresses whenever something changes, keep trying when they are down, change the shared secret periodically, and record what arrived",
+      "expected_skill": "webhook-integrations",
+      "pack": "core"
+    },
+    {
+      "id": "business-webhooks-boundary",
+      "query": "match what the card processor reports against what each customer's monthly plan and consumption say they should have paid",
+      "expected_skill": "saas-billing",
+      "pack": "core"
+    },
+    {
+      "id": "business-webhooks-failure",
+      "query": "a customer-registered callback URL bounces our server to an internal network address, letting them probe our infrastructure",
+      "expected_skill": "webhook-integrations",
+      "pack": "core"
+    },
+    {
+      "id": "business-audit-direct",
+      "query": "keep an unalterable history of who did what to important records, hide sensitive values in it, and decide how long to keep it",
+      "expected_skill": "audit-logging",
+      "pack": "core"
+    },
+    {
+      "id": "business-audit-paraphrase",
+      "query": "show which person edited a signed-off document, and distinguish a support engineer acting on a user's behalf from the user themselves",
+      "expected_skill": "audit-logging",
+      "pack": "core"
+    },
+    {
+      "id": "business-audit-boundary",
+      "query": "make our Quarkus service report counters, tag every line it writes with the request identifier, and expose liveness and readiness checks",
+      "expected_skill": "quarkus-observability",
+      "pack": "java"
+    },
+    {
+      "id": "business-audit-failure",
+      "query": "the store that keeps our who-did-what history is down while an administrator's edit writes secret credentials into the saved old and new values",
+      "expected_skill": "audit-logging",
+      "pack": "core"
+    },
+    {
+      "id": "business-erp-direct",
+      "query": "split a back-office suite for a group of companies into modules, decide which module owns shared reference records, and define the states a business paper goes through",
+      "expected_skill": "erp-domain-design",
+      "pack": "core"
+    },
+    {
+      "id": "business-erp-paraphrase",
+      "query": "model several incorporated companies and their offices in one back-office system while keeping a single authoritative list of customers and products",
+      "expected_skill": "erp-domain-design",
+      "pack": "core"
+    },
+    {
+      "id": "business-erp-boundary",
+      "query": "stop one customer company's cached responses and database rows from being served to another customer company",
+      "expected_skill": "saas-multitenancy",
+      "pack": "core"
+    },
+    {
+      "id": "business-erp-failure",
+      "query": "an order in one subsidiary points at a record owned by a sister company, and renaming a product changes how already finalised paperwork reads",
+      "expected_skill": "erp-domain-design",
+      "pack": "core"
+    },
+    {
+      "id": "business-accounting-direct",
+      "query": "build bookkeeping where every transaction hits two accounts equally, months can be locked, and mistakes are corrected by offsetting entries",
+      "expected_skill": "erp-accounting",
+      "pack": "core"
+    },
+    {
+      "id": "business-accounting-paraphrase",
+      "query": "make sure both sides of every bookkeeping record add up to the same amount when finance shuts the month",
+      "expected_skill": "erp-accounting",
+      "pack": "core"
+    },
+    {
+      "id": "business-accounting-boundary",
+      "query": "work out each customer's monthly charge from their package and consumption, and retry cards that were declined",
+      "expected_skill": "saas-billing",
+      "pack": "core"
+    },
+    {
+      "id": "business-accounting-failure",
+      "query": "the same bookkeeping record was written twice just as finance locked the month, and now the two sides of the books no longer match",
+      "expected_skill": "erp-accounting",
+      "pack": "core"
+    },
+    {
+      "id": "business-inventory-direct",
+      "query": "track how many of each item we hold at every depot, earmark goods for orders, move them between sites, and follow individual batches",
+      "expected_skill": "erp-inventory",
+      "pack": "core"
+    },
+    {
+      "id": "business-inventory-paraphrase",
+      "query": "two shoppers must not both get the final item on the shelf, and the physical tally has to agree with the recorded ins and outs",
+      "expected_skill": "erp-inventory",
+      "pack": "core"
+    },
+    {
+      "id": "business-inventory-boundary",
+      "query": "the same fetched data is copied into several React components and passed down through five layers; decide where it should live",
+      "expected_skill": "frontend-state",
+      "pack": "web"
+    },
+    {
+      "id": "business-inventory-failure",
+      "query": "two orders both earmarked the one remaining item, and scanning the same delivery twice made the system think we hold double the goods",
+      "expected_skill": "erp-inventory",
+      "pack": "core"
+    },
+    {
+      "id": "business-procurement-direct",
+      "query": "handle buying materials from outside firms: what we asked for, what was delivered, and what they billed must agree before we pay",
+      "expected_skill": "erp-procurement",
+      "pack": "core"
+    },
+    {
+      "id": "business-procurement-paraphrase",
+      "query": "staff request things to buy, deliveries come in several parts, and the bill may differ slightly from what was agreed; keep track of what we still owe",
+      "expected_skill": "erp-procurement",
+      "pack": "core"
+    },
+    {
+      "id": "business-procurement-boundary",
+      "query": "one person prepares a request and a different person must sign it off; allow a stand-in when the signer is away and bump it up the chain when it sits too long",
+      "expected_skill": "workflow-approvals",
+      "pack": "core"
+    },
+    {
+      "id": "business-procurement-failure",
+      "query": "half a shipment of bought materials was booked in twice, and the same bill from the outside firm came in again for more than what was agreed",
+      "expected_skill": "erp-procurement",
+      "pack": "core"
+    },
+    {
+      "id": "business-sales-direct",
+      "query": "cover the path from an offer to a buyer through dispatching goods, billing them, getting paid, and taking goods back with a refund document",
+      "expected_skill": "erp-sales",
+      "pack": "core"
+    },
+    {
+      "id": "business-sales-paraphrase",
+      "query": "follow what buyers requested, dispatch it in several parcels, bill it, chase the money, and accept items sent back without dispatching anything twice",
+      "expected_skill": "erp-sales",
+      "pack": "core"
+    },
+    {
+      "id": "business-sales-boundary",
+      "query": "build the core bookkeeping: each transaction recorded on two sides, a report proving the sides agree, and a way to lock a finished month",
+      "expected_skill": "erp-accounting",
+      "pack": "core"
+    },
+    {
+      "id": "business-sales-failure",
+      "query": "a parcel to a buyer was billed twice and the items sent back were refunded twice, while the buyer already owes more than we allow",
+      "expected_skill": "erp-sales",
+      "pack": "core"
+    },
+    {
+      "id": "business-approvals-direct",
+      "query": "requests need sign-off from someone other than the author, with defined stages, stand-ins for absent signers, and automatic bumping to a manager",
+      "expected_skill": "workflow-approvals",
+      "pack": "core"
+    },
+    {
+      "id": "business-approvals-paraphrase",
+      "query": "once a request is sent for sign-off the rules about who must agree may not change, and authors must not be able to green-light their own edited version",
+      "expected_skill": "workflow-approvals",
+      "pack": "core"
+    },
+    {
+      "id": "business-approvals-boundary",
+      "query": "have a hosted runner compile the project and enforce the style rules on every push, failing the change when standards are not met",
+      "expected_skill": "ci-cd",
+      "pack": "core"
+    },
+    {
+      "id": "business-approvals-failure",
+      "query": "a stand-in signer green-lights an outdated version of their own request at the same moment a second signer turns it down",
+      "expected_skill": "workflow-approvals",
+      "pack": "core"
+    },
+    {
+      "id": "business-import-direct",
+      "query": "let users upload a file of records, preview what would happen without saving, see which lines are wrong, match their headings to ours, and confirm the totals afterwards",
+      "expected_skill": "data-import-export",
+      "pack": "core"
+    },
+    {
+      "id": "business-import-paraphrase",
+      "query": "load large comma-separated uploads from partners in chunks that can continue after an interruption, without mangling postcodes that start with 0 or money amounts",
+      "expected_skill": "data-import-export",
+      "pack": "core"
+    },
+    {
+      "id": "business-import-boundary",
+      "query": "in Quarkus, add a persistent class with its ORM annotations and a versioned change script for Postgres that will not lock the live system",
+      "expected_skill": "quarkus-persistence",
+      "pack": "java"
+    },
+    {
+      "id": "business-import-failure",
+      "query": "a bulk upload continued after a failure and linked records to another customer's data, and a downloaded spreadsheet cell starting with an equals sign ran as a calculation",
+      "expected_skill": "data-import-export",
+      "pack": "core"
+    },
+    {
+      "id": "business-membership-owner-invitation",
+      "query": "when someone accepts a join link, the only remaining person in charge of the group is demoted and nobody is left to run it",
+      "expected_skill": "membership-management",
+      "pack": "core"
+    }
+  ]
+}

@@ -1,8 +1,12 @@
 # evals
 
-Evaluation sets and the fixtures that tests and spikes measure against. Nothing is here
-yet: the first sets arrive with the N0 spikes and with `evals/retrieval` in N3
-([ROADMAP](../ROADMAP.md)).
+Evaluation sets and the fixtures that tests and spikes measure against.
+
+| Directory | Contents |
+|---|---|
+| [`router/`](router/README.md) | Query sets for the router, first used by Spike D |
+
+`evals/retrieval` arrives in N3 ([ROADMAP](../ROADMAP.md)).
 
 Rules for anything added to this directory:
 
