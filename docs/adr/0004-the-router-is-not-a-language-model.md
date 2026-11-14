@@ -60,6 +60,6 @@ Adding a sub-domain retrains only the affected head.
 |---|---|
 | A language model as the router | A model load and seconds of latency on every request; unreliable at this size |
 | One flat classifier over all labels | Every new sub-domain retrains and re-evaluates everything |
-| Nearest neighbour over embeddings only | No calibrated confidence, so no trustworthy abstention |
+| Nearest-neighbour routing with no held-out OOD calibration | A cosine score is not a probability. Spike D found a held-out threshold could control far-OOD false accepts for centroids, but did not measure k-nearest-neighbour density or broader domains; calibration remains required |
 | Rules only | Does not generalise to paraphrases; kept as the first tier for unambiguous cases |
 | Let the client choose the specialist | Still allowed (`model: <pack>/<neuron>`), but most clients cannot know the catalogue |

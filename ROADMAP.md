@@ -6,8 +6,13 @@ split into small commits, one concern each, with tests first for logic.
 
 Status: **N0 in progress.** The repository layout, the Makefile gates, CI, and
 `neuron version` are in place. Of the six spikes, D (router quality) is measured
-([result](docs/spikes/d-router-quality.md)); the other five are not started. The ADRs are
-Proposed until N0 measures the assumptions they rest on.
+([result](docs/spikes/d-router-quality.md)) and E (pure-Go inference parity) is measured
+([result](docs/spikes/e-go-inference-parity.md)); F has only a partial exploratory preview
+([result](docs/spikes/f-retrieval-preview.md)); A has a no-download desk preselection
+([preselection and local Ollama smoke](docs/spikes/a-model-preselection.md)); B has a
+no-install training/export preflight ([result](docs/spikes/b-training-preflight.md)); C has
+a no-install engine API preflight ([result](docs/spikes/c-adapter-api-preflight.md)). The
+ADRs are Proposed until N0 measures the assumptions they rest on and the owner reviews them.
 
 | Milestone | Release | Theme | Status |
 |---|---|---|---|
@@ -72,25 +77,36 @@ Deliverables:
   five platforms, Python lint and tests under uv, the Agent-Secure secret and dependency
   gate, one aggregate check.
 - [x] `neuron version` (`--json`).
-- [ ] Spike A, base model shortlist. Open-weight candidates between roughly 100M and 1B
-  parameters. Per candidate: licence as written on the model card, 4-bit GGUF size,
+- [ ] Spike A, base model shortlist. [Preselection plus one local Ollama smoke](docs/spikes/a-model-preselection.md)
+  recommends two open-weight candidates between roughly 100M and 1B parameters; full
+  `llama-server` measurements remain blocked. Per candidate: licence as written on the
+  model card, 4-bit GGUF size,
   resident memory at 2k and 4k context, prompt and generation tokens per second with CPU
   threads only, and validity rate under JSON-schema-constrained decoding. Measured on an
   8 GB laptop and on a two-vCPU x86 Linux VM.
-- [ ] Spike B, adapter training on 8 GB. Train a low-rank adapter on a base near 150M and one
+- [ ] Spike B, adapter training on 8 GB. [No-install preflight](docs/spikes/b-training-preflight.md)
+  maps the PEFT and MLX conversion paths; measurements remain blocked. Train a low-rank
+  adapter on a base near 150M and one
   near 0.5B parameters through two paths (PyTorch with PEFT on CPU, and MLX on Apple
   Silicon). Record peak memory, wall time per thousand examples, and whether the result
-  becomes a GGUF adapter the engine loads. Known risk to check: GGUF export from MLX is
-  limited and does not work from a quantized base.
+  becomes a GGUF adapter the engine loads. Known risk to check: MLX QLoRA can train from a
+  quantized base, but its documented `fuse --export-gguf` path emits a fused full model for
+  limited architectures, not a standalone GGUF adapter; the PEFT-to-GGUF adapter path is
+  better documented.
 - [ ] Spike C, adapter switching in the engine. Against a pinned `llama-server`: preload
   several adapters, select one per request, and measure switch latency, the effect on the
   prompt cache, and behaviour when concurrent requests name different adapters.
+  [Source preflight](docs/spikes/c-adapter-api-preflight.md) found request-level LoRA
+  settings in the shared completion schema, per-slot adapter state, and cache clearing on
+  normal adapter changes; OpenAI chat pass-through, measured switch cost, and concurrency
+  correctness still need a pinned-engine test.
 - [x] Spike D, router quality. Static embeddings with a linear head, against a keyword
   baseline and a small transformer encoder, on the public Agent-Skills scenario set:
   accuracy, abstention calibration on out-of-domain inputs, p95 latency, artifact size.
   Result: [docs/spikes/d-router-quality.md](docs/spikes/d-router-quality.md).
-- [ ] Spike E, pure-Go inference parity. The static embedding lookup and the router head
-  implemented in Go reproduce the Python reference outputs within a stated tolerance.
+- [x] Spike E, pure-Go inference parity. The static embedding lookup and centroid scorer
+  implemented in Go reproduce Python outputs within `1e-5` on 178 frozen queries
+  ([result](docs/spikes/e-go-inference-parity.md)).
 - [ ] Spike F, retrieval quality. SQLite FTS5 plus static vectors with reciprocal rank fusion
   on a public documentation corpus, against a transformer embedder: recall@5 and MRR on a
   golden set.
@@ -120,9 +136,12 @@ Tests: schema fixtures, valid and invalid; router fixtures for a direct request,
 paraphrase, a near miss that must route elsewhere, and an out-of-domain input that must
 abstain; Go and Python parity fixtures; `packs verify` fails on a tampered artifact.
 
-Exit criteria: on the public scenario set the router beats the keyword baseline by a
-recorded margin, with out-of-domain abstention measured; p95 route latency meets the
-N0 budget on the `nano` profile; static binaries build for five platforms.
+Exit criteria (proposed after Spike D): on the original public scenario set, the router
+does not regress against the BM25 keyword baseline; on a separate, human-reviewed frozen
+paraphrase set, it beats BM25 by a preregistered margin. Out-of-domain abstention is
+measured; p95 route latency meets the N0 budget on the `nano` profile; static binaries
+build for five platforms. The synthetic paraphrase set is not an N1 gate until its human
+review is complete and the owner confirms the margin.
 
 ## N2: The lab for small encoders
 
