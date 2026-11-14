@@ -118,11 +118,21 @@ exact object `{"status":"ok","count":1}`.
 | 2,048 | 1,847 | 368,080 KiB (about 359.5 MiB) | 312.9 | 71.4 | 6.75 s |
 | 4,096 | 3,737 | 361,792 KiB (about 353.3 MiB) | 139.3 | 36.4 | 29.37 s |
 
-RSS is a single post-request `ps` sample for one server process, not a peak/RSS time
-series; timings are one synthetic request and varied from the Ollama API profile. This is
-a useful feasibility result from the actual `llama-server` implementation, but its version
-is inherited from Ollama rather than pinned by Agent-Neuron, it ran only on one host, and
-the model is F16. It does not finish Spike A or validate the two-host, pinned-engine matrix.
+Those initial single samples were noisy. Three cold-server repeats per context gave these
+medians and min–max ranges:
+
+| Context | RSS after request | Prompt tokens/s | Output tokens/s | Wall request time |
+|---|---:|---:|---:|---:|
+| 2,048 | 367,072 KiB (range 347,536–380,688) | 294.1 (122.3–304.4) | 65.1 (55.3–70.8) | 6.64 s (6.48–15.44) |
+| 4,096 | 376,672 KiB (361,312–380,144) | 106.9 (104.6–138.6) | 23.7 (9.7–27.8) | 35.92 s (27.79–38.04) |
+
+All six responses returned the exact schema object. The n=3 range is illustrative, not a
+stable percentile estimate; the 2k prompt and 4k output speed varied by more than 2x.
+Potential host scheduling/memory-pressure effects were not controlled, so do not budget
+from the fastest run. RSS is one post-request `ps` sample per process, not a peak/RSS time
+series. The bundled server version is inherited from Ollama rather than pinned by
+Agent-Neuron, it ran only on one host, and the model is F16. This does not finish Spike A or
+validate the two-host, pinned-engine matrix.
 
 Re-run the same local tag with:
 
