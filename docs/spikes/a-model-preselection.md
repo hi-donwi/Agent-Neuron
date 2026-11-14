@@ -89,10 +89,20 @@ reported a 295 MB loaded model and `100% CPU`; this is a single smoke, not a thr
 quality benchmark. The model and temporary server were unloaded/stopped after the test;
 the ignored model files remain available locally.
 
-The call was local-only (`OLLAMA_NO_CLOUD=1`, bound to `127.0.0.1`). No Python/ML packages
+The calls were local-only (`OLLAMA_NO_CLOUD=1`, bound to `127.0.0.1`). No Python/ML packages
 were installed. Ollama is a free local runtime, but it is not the project's target pinned
 `llama-server`; this does not complete Spike A or validate `llama-server` JSON-schema
 behavior.
+
+### Context profile (Ollama only)
+
+Two additional CPU-only JSON Schema requests used `num_ctx=2048` and `4096`, with synthetic
+prompt lengths of 2,047 and 4,095 evaluated tokens respectively. Ollama reported loaded
+model allocations of 332 MB at 2k and 382 MB at 4k. One request per context returned valid
+JSON; single-run prompt/generation rates were 271/30.4 tokens/s at 2k and 173.8/14.7
+tokens/s at 4k, with total times 8.19 s and 25.58 s. This is not a p50/p95 benchmark.
+`ollama ps` allocation is not OS process RSS, the model is F16 rather than Q4, and none of
+these figures substitute for the required `llama-server`/two-host Spike A measurements.
 
 Re-run the same local tag with:
 

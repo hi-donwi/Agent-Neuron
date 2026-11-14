@@ -2,12 +2,12 @@
 
 A spike measures one risky assumption before the design that rests on it is treated as
 settled. Milestone N0 has six ([ROADMAP](../../ROADMAP.md)). Each write-up states its
-method, its data and their pins, the machine, the numbers, and what they mean for the ADR
-they inform. A spike changes no ADR's status; the decider does that.
+method, data pins, measured runtime profile where available, results, limitations, and
+implications for the ADR it informs. A spike changes no ADR's status; the decider does that.
 
 | Spike | Question | Status | Informs |
 |---|---|---|---|
-| [A](a-model-preselection.md) | Which base models fit each profile, and under which licences? | Preselection + one Ollama smoke; full measurements blocked | ADR-0003, ADR-0008 |
+| [A](a-model-preselection.md) | Which base models fit each profile, and under which licences? | Preselection + Ollama 2k/4k profile; full measurements blocked | ADR-0003, ADR-0008 |
 | [B](b-training-preflight.md) | Which training path yields a GGUF adapter from an 8 GB machine? | No-install preflight only; measurements blocked | ADR-0003, ADR-0008 |
 | [C](c-adapter-api-preflight.md) | Is per-request adapter selection reliable in the pinned engine? | No-install source preflight only; measurements blocked | ADR-0003 |
 | [D](d-router-quality.md) | Are static embeddings accurate enough to route, and where do they need help? | Measured 2026-11-14 | ADR-0004, ADR-0005 |
