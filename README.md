@@ -10,7 +10,7 @@ Agent-Neuron builds, packages, routes, and serves the small models themselves.
 > **Status: milestone N0 in progress.** The repository builds and gates itself, and
 > `neuron version` is the only command that exists; the others shown below are planned.
 > Every number in these documents is a budget to confirm by measurement in milestone N0,
-> not a result.
+> not a result, except in the spike write-ups under [docs/spikes](docs/spikes/README.md).
 
 ## Why
 
@@ -162,6 +162,7 @@ serves neurons never needs it.
 - [ROADMAP.md](ROADMAP.md): milestones N0 to N8 with deliverables, tests, and exit criteria
 - [docs/architecture.md](docs/architecture.md): components, request path, formats, training and growth loops
 - [docs/adr](docs/adr/README.md): the decisions that are expensive to reverse
+- [docs/spikes](docs/spikes/README.md): what the N0 spikes measured
 
 ## Licence
 

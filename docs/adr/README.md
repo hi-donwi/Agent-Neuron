@@ -4,7 +4,8 @@ Decisions that are expensive to reverse. A change that contradicts one starts wi
 ADR that supersedes it, not with a pull request. Old ADRs are never deleted.
 
 All ADRs below are **Proposed**. Milestone N0 measures the assumptions they rest on; each
-one is then Accepted, amended, or superseded (see [ROADMAP.md](../../ROADMAP.md)).
+one is then Accepted, amended, or superseded (see [ROADMAP.md](../../ROADMAP.md)). Spike
+results are under [docs/spikes](../spikes/README.md).
 
 | ADR | Decision | Status | Informed by |
 |---|---|---|---|

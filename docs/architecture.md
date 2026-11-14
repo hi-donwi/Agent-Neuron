@@ -372,6 +372,6 @@ device with nothing else installed, `neuron serve` alone is enough.
 | Which base models, measured on CPU threads, fit each profile, and under which licences? | A |
 | Which training path yields a GGUF adapter from an 8 GB machine? | B |
 | Is per-request adapter selection reliable and fast enough in the pinned engine? | C |
-| Are static embeddings accurate enough to route, and where do they need help? | D |
+| Are static embeddings accurate enough to route, and where do they need help? | D ([measured](spikes/d-router-quality.md)) |
 | Does pure-Go router inference match the Python reference? | E |
 | How much retrieval quality do static vectors give up, and does the hybrid recover it? | F |

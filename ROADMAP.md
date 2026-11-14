@@ -5,8 +5,9 @@ ends with explicit exit criteria. Milestones are sequential; work inside a miles
 split into small commits, one concern each, with tests first for logic.
 
 Status: **N0 in progress.** The repository layout, the Makefile gates, CI, and
-`neuron version` are in place; the six spikes are not started. The ADRs are Proposed
-until N0 measures the assumptions they rest on.
+`neuron version` are in place. Of the six spikes, D (router quality) is measured
+([result](docs/spikes/d-router-quality.md)); the other five are not started. The ADRs are
+Proposed until N0 measures the assumptions they rest on.
 
 | Milestone | Release | Theme | Status |
 |---|---|---|---|
@@ -84,9 +85,10 @@ Deliverables:
 - [ ] Spike C, adapter switching in the engine. Against a pinned `llama-server`: preload
   several adapters, select one per request, and measure switch latency, the effect on the
   prompt cache, and behaviour when concurrent requests name different adapters.
-- [ ] Spike D, router quality. Static embeddings with a linear head, against a keyword
+- [x] Spike D, router quality. Static embeddings with a linear head, against a keyword
   baseline and a small transformer encoder, on the public Agent-Skills scenario set:
   accuracy, abstention calibration on out-of-domain inputs, p95 latency, artifact size.
+  Result: [docs/spikes/d-router-quality.md](docs/spikes/d-router-quality.md).
 - [ ] Spike E, pure-Go inference parity. The static embedding lookup and the router head
   implemented in Go reproduce the Python reference outputs within a stated tolerance.
 - [ ] Spike F, retrieval quality. SQLite FTS5 plus static vectors with reciprocal rank fusion
