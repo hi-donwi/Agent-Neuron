@@ -3,6 +3,7 @@ import pytest
 from neuron_lab.metrics import (
     auroc,
     expected_calibration_error,
+    paired_sign_test,
     percentile,
     threshold_for_false_accept,
     wilson_interval,
@@ -102,3 +103,31 @@ def test_threshold_with_a_zero_rate_admits_nothing():
     scores = [0.3, 0.6]
 
     assert threshold_for_false_accept(scores, 0.0) == 0.6
+
+
+def test_paired_sign_test_counts_only_the_cases_where_two_arms_disagree():
+    first = [True, True, True, False, False, True]
+    second = [True, False, False, False, True, False]
+
+    only_first, only_second, p_value = paired_sign_test(first, second)
+
+    assert (only_first, only_second) == (3, 1)
+    # Two-sided exact binomial with 4 discordant pairs: 2 * (C(4,0) + C(4,1)) / 16.
+    assert p_value == pytest.approx(0.625)
+
+
+def test_paired_sign_test_is_one_when_the_arms_never_disagree_or_split_evenly():
+    assert paired_sign_test([True, False], [True, False]) == (0, 0, 1.0)
+    assert paired_sign_test([True, False], [False, True]) == (1, 1, 1.0)
+
+
+def test_paired_sign_test_is_small_when_one_arm_wins_every_disagreement():
+    only_first, only_second, p_value = paired_sign_test([True] * 10, [False] * 10)
+
+    assert (only_first, only_second) == (10, 0)
+    assert p_value == pytest.approx(2 / 1024)
+
+
+def test_paired_sign_test_refuses_unequal_lengths():
+    with pytest.raises(ValueError):
+        paired_sign_test([True], [True, False])

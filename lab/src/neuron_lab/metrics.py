@@ -76,3 +76,21 @@ def threshold_for_false_accept(scores: Sequence[float], max_rate: float) -> floa
     if allowed >= len(ordered):
         return -math.inf
     return ordered[allowed]
+
+
+def paired_sign_test(first: Sequence[bool], second: Sequence[bool]) -> tuple[int, int, float]:
+    """Compare two classifiers on the same cases: an exact two-sided sign test.
+
+    Returns how many cases only the first got right, how many only the second got right,
+    and the chance of a split at least this uneven if neither were better. Cases both got
+    right or both got wrong carry no information and are ignored.
+    """
+    if len(first) != len(second):
+        raise ValueError("both classifiers must be scored on the same cases")
+    only_first = sum(a and not b for a, b in zip(first, second, strict=True))
+    only_second = sum(b and not a for a, b in zip(first, second, strict=True))
+    discordant = only_first + only_second
+    if discordant == 0:
+        return 0, 0, 1.0
+    tail = sum(math.comb(discordant, k) for k in range(min(only_first, only_second) + 1))
+    return only_first, only_second, min(1.0, 2 * tail / 2**discordant)
