@@ -1,0 +1,39 @@
+# Build output
+/bin/
+/dist/
+*.exe
+
+# Test artifacts
+/coverage.out
+/coverage.html
+*.test
+
+# Python lab
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# Local runtime data created while developing: packs, datasets, candidates, reports
+/.neuron/
+
+# Model weights and datasets never enter git
+*.gguf
+*.safetensors
+*.onnx
+*.bin
+*.npz
+/datasets/
+/models/
+
+# Workspace-generated pointers (never committed)
+AGENTS.md
+.workspace
+.workspace-instructions.md
+
+# Editor and OS
+.DS_Store
+.idea/
+.vscode/
+*.swp

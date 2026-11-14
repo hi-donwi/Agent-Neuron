@@ -1,0 +1,12 @@
+Agent-Neuron (neuron)
+Copyright 2026 Doni Wicaksono
+
+This product includes software developed by Doni Wicaksono
+(https://github.com/hi-donwi/Agent-Neuron).
+
+Licensed under the Apache License, Version 2.0. A copy is in the LICENSE file,
+or at http://www.apache.org/licenses/LICENSE-2.0.
+
+Agent-Neuron does not distribute third-party model weights in this repository.
+Base models are fetched from their publishers under their own licences, and
+every neuron manifest records the licence of the base model it was built on.
