@@ -104,6 +104,26 @@ tokens/s at 4k, with total times 8.19 s and 25.58 s. This is not a p50/p95 bench
 `ollama ps` allocation is not OS process RSS, the model is F16 rather than Q4, and none of
 these figures substitute for the required `llama-server`/two-host Spike A measurements.
 
+### Bundled `llama-server` profile
+
+Ollama 0.30.8 also ships a `llama-server` binary (build 9509, upstream commit
+`6f3a9f3de`). A direct, offline run loaded the same cached GGUF blob without installing or
+downloading anything. The server listened on `127.0.0.1`, used one slot, two CPU threads,
+`--device none`, and `--n-gpu-layers 0`; each request used OpenAI-compatible
+`/v1/chat/completions` JSON Schema output. One synthetic request per context returned the
+exact object `{"status":"ok","count":1}`.
+
+| Context | Prompt tokens | Process RSS after request | Prompt tokens/s | Output tokens/s | Total request |
+|---|---:|---:|---:|---:|---:|
+| 2,048 | 1,847 | 368,080 KiB (about 359.5 MiB) | 312.9 | 71.4 | 6.75 s |
+| 4,096 | 3,737 | 361,792 KiB (about 353.3 MiB) | 139.3 | 36.4 | 29.37 s |
+
+RSS is a single post-request `ps` sample for one server process, not a peak/RSS time
+series; timings are one synthetic request and varied from the Ollama API profile. This is
+a useful feasibility result from the actual `llama-server` implementation, but its version
+is inherited from Ollama rather than pinned by Agent-Neuron, it ran only on one host, and
+the model is F16. It does not finish Spike A or validate the two-host, pinned-engine matrix.
+
 Re-run the same local tag with:
 
 ```bash
