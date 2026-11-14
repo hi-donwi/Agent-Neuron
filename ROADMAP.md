@@ -4,12 +4,13 @@ Agent-Neuron is built in nine milestones. Each one ships something usable on its
 ends with explicit exit criteria. Milestones are sequential; work inside a milestone is
 split into small commits, one concern each, with tests first for logic.
 
-Status: **planning stage. N0 not started.** The ADRs are Proposed until N0 measures the
-assumptions they rest on.
+Status: **N0 in progress.** The repository layout, the Makefile gates, CI, and
+`neuron version` are in place; the six spikes are not started. The ADRs are Proposed
+until N0 measures the assumptions they rest on.
 
 | Milestone | Release | Theme | Status |
 |---|---|---|---|
-| [N0](#n0-foundation-and-measurement) | - | Foundation: repository, CI, ADRs, six spikes | Planned |
+| [N0](#n0-foundation-and-measurement) | - | Foundation: repository, CI, ADRs, six spikes | In progress |
 | [N1](#n1-neuron-format-and-the-cortex-router) | v0.1 | Neuron format and the cortex router | Planned |
 | [N2](#n2-the-lab-for-small-encoders) | v0.2 | Lab: datasets, training, evaluation for router and extraction neurons | Planned |
 | [N3](#n3-knowledge-packs) | v0.3 | Knowledge packs and extractive answers | Planned |
@@ -64,31 +65,31 @@ measured before any design is treated as settled.
 
 Deliverables:
 
-- Layout: `cmd/neuron`, `internal/` (Go runtime), `lab/` (Python, managed by uv with a
+- [x] Layout: `cmd/neuron`, `internal/` (Go runtime), `lab/` (Python, managed by uv with a
   lock file), `evals/`, `docs/`. Makefile targets `check`, `static-check`, `lab-check`.
-- CI: gofmt, `go mod tidy` check, vet, tests on Linux and macOS, static cross-compile for
+- [x] CI: gofmt, `go mod tidy` check, vet, tests on Linux and macOS, static cross-compile for
   five platforms, Python lint and tests under uv, the Agent-Secure secret and dependency
   gate, one aggregate check.
-- `neuron version` (`--json`).
-- Spike A, base model shortlist. Open-weight candidates between roughly 100M and 1B
+- [x] `neuron version` (`--json`).
+- [ ] Spike A, base model shortlist. Open-weight candidates between roughly 100M and 1B
   parameters. Per candidate: licence as written on the model card, 4-bit GGUF size,
   resident memory at 2k and 4k context, prompt and generation tokens per second with CPU
   threads only, and validity rate under JSON-schema-constrained decoding. Measured on an
   8 GB laptop and on a two-vCPU x86 Linux VM.
-- Spike B, adapter training on 8 GB. Train a low-rank adapter on a base near 150M and one
+- [ ] Spike B, adapter training on 8 GB. Train a low-rank adapter on a base near 150M and one
   near 0.5B parameters through two paths (PyTorch with PEFT on CPU, and MLX on Apple
   Silicon). Record peak memory, wall time per thousand examples, and whether the result
   becomes a GGUF adapter the engine loads. Known risk to check: GGUF export from MLX is
   limited and does not work from a quantized base.
-- Spike C, adapter switching in the engine. Against a pinned `llama-server`: preload
+- [ ] Spike C, adapter switching in the engine. Against a pinned `llama-server`: preload
   several adapters, select one per request, and measure switch latency, the effect on the
   prompt cache, and behaviour when concurrent requests name different adapters.
-- Spike D, router quality. Static embeddings with a linear head, against a keyword
+- [ ] Spike D, router quality. Static embeddings with a linear head, against a keyword
   baseline and a small transformer encoder, on the public Agent-Skills scenario set:
   accuracy, abstention calibration on out-of-domain inputs, p95 latency, artifact size.
-- Spike E, pure-Go inference parity. The static embedding lookup and the router head
+- [ ] Spike E, pure-Go inference parity. The static embedding lookup and the router head
   implemented in Go reproduce the Python reference outputs within a stated tolerance.
-- Spike F, retrieval quality. SQLite FTS5 plus static vectors with reciprocal rank fusion
+- [ ] Spike F, retrieval quality. SQLite FTS5 plus static vectors with reciprocal rank fusion
   on a public documentation corpus, against a transformer embedder: recall@5 and MRR on a
   golden set.
 

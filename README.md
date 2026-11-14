@@ -7,9 +7,10 @@ Agent-Neuron (`neuron`) is the model layer of the Agent Workspace suite.
 [Agent-Brain](https://github.com/hi-donwi/Agent-Brain) is the gateway in front of models;
 Agent-Neuron builds, packages, routes, and serves the small models themselves.
 
-> **Status: planning stage.** This repository holds the plan, the architecture, and the
-> decisions. No command shown below exists yet. Every number in these documents is a
-> budget to confirm by measurement in milestone N0, not a result.
+> **Status: milestone N0 in progress.** The repository builds and gates itself, and
+> `neuron version` is the only command that exists; the others shown below are planned.
+> Every number in these documents is a budget to confirm by measurement in milestone N0,
+> not a result.
 
 ## Why
 
@@ -142,6 +143,20 @@ an 8 GB machine. Anything larger is trained elsewhere and imported as an artifac
 - Own an agent loop, tools, approvals, or a web console. Agent hosts own those.
 - Store model weights in git.
 
+## Building
+
+`neuron` is one static Go binary. It needs Go 1.26 or newer and nothing else.
+
+```sh
+make build        # bin/neuron
+make check        # the Go gate CI runs: gofmt, go.mod tidiness, vet, race tests, smoke
+make lab-check    # the lab gate: Python lint and tests under uv (only for work in lab/)
+```
+
+`make check` also needs a C compiler, for the race detector. The lab in [lab](lab/README.md)
+is Python managed by [uv](https://docs.astral.sh/uv/); a machine that only builds or
+serves neurons never needs it.
+
 ## Documents
 
 - [ROADMAP.md](ROADMAP.md): milestones N0 to N8 with deliverables, tests, and exit criteria
@@ -150,6 +165,7 @@ an 8 GB machine. Anything larger is trained elsewhere and imported as an artifac
 
 ## Licence
 
-Apache-2.0. See [LICENSE](LICENSE) and [NOTICE](NOTICE). Agent-Neuron does not distribute
+Apache-2.0. See [LICENSE](LICENSE), [NOTICE](NOTICE), and
+[THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md). Agent-Neuron does not distribute
 third-party model weights in this repository; base models keep their publishers' licences,
 recorded in every neuron manifest.

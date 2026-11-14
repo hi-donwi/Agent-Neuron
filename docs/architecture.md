@@ -1,6 +1,6 @@
 # Architecture
 
-Status: design for a project in its planning stage. Formats shown here are drafts, and
+Status: design. Only the N0 foundation is implemented. Formats shown here are drafts, and
 every number is a budget to confirm in milestone N0 (see [ROADMAP.md](../ROADMAP.md)).
 
 ## 1. The problem and the bet
