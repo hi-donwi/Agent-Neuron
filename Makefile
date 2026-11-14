@@ -45,8 +45,7 @@ fmt-check:
 	if [ -n "$$unformatted" ]; then echo "Not gofmt-formatted:"; echo "$$unformatted"; exit 1; fi
 
 tidy-check:
-	go mod tidy
-	git diff --exit-code -- go.mod go.sum
+	go mod tidy -diff
 
 cross:
 	@for p in $(PLATFORMS); do \
