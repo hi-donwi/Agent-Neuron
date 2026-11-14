@@ -5,14 +5,23 @@ description = "Agent-Neuron lab: builds, trains, and evaluates neurons. Serving 
 readme = "README.md"
 license = "Apache-2.0"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "numpy>=2.5.4",
+]
 
-# Development tools only. Machine-learning dependencies arrive with the milestone
-# that needs them, each one pinned by uv.lock.
+# `dev` is what `make lab-check` and CI install. `spikes` holds what the N0 spikes under
+# spikes/ need on top of it (`uv sync --locked --group spikes`); CI does not install it.
+# Machine-learning dependencies arrive with the milestone that needs them, each one
+# pinned by uv.lock.
 [dependency-groups]
 dev = [
     "pytest>=8.0",
     "ruff>=0.8",
+]
+spikes = [
+    "model2vec>=0.10.0",
+    "onnxruntime>=1.32.0",
+    "tokenizers>=0.23.3",
 ]
 
 [build-system]
