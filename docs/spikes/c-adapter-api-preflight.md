@@ -1,7 +1,7 @@
 # Spike C preflight: adapter selection and cache behavior
 
 - **Date:** 2026-11-14
-- **Status:** No-install source preflight; Spike C is not complete
+- **Status:** Source preflight plus unloaded-adapter live probe; Spike C is not complete
 - **Informs:** [ADR-0003](../adr/0003-one-shared-base-with-adapters.md), still Proposed
 - **Source snapshot:** `ggml-org/llama.cpp` revision
   `32bdc3a89e6528d3e419024c833c5dabf32c7541`
@@ -35,6 +35,28 @@ request-level selection, while warning against concurrent use of the global scal
 They do not establish that every OpenAI-compatible chat parser version preserves the
 extension or that mixed concurrent requests are free from cross-contamination.
 
+## Live unloaded-adapter probe
+
+**Probe date:** 2026-11-15.
+
+A bounded smoke used the already-installed Ollama 0.30.8 bundled server (build 9509,
+upstream commit `6f3a9f3de`) with the locally cached SmolLM2-135M base, CPU-only and
+loopback-only. No adapter was loaded or downloaded.
+
+- `GET /lora-adapters` returned HTTP 200 and `[]`.
+- Baseline `/v1/chat/completions` returned HTTP 200.
+- The same chat request with `lora: [{"id": 999, "scale": 1.0}]` also returned HTTP 200
+  and the same generated text; with no adapters loaded this does not prove whether chat
+  applied or ignored the extension.
+- `/completion` with the same unknown LoRA ID returned HTTP 200 and echoed that ID in
+  `generation_settings.lora`. The server did not reject the unloaded ID on this path.
+
+**Operational consequence:** the client should read `/lora-adapters` at startup and reject
+any requested adapter ID not present in that loaded list, rather than treating an HTTP 200
+as proof that the intended specialist adapter was applied. This is a defensive
+recommendation from an empty-list negative-path probe; it does not prove behavior with a
+valid loaded adapter or the OpenAI chat extension.
+
 ## Recommended test matrix
 
 After selecting an engine/model environment and pinning its server build:
@@ -62,10 +84,11 @@ separate from the synthetic routing evaluation in Spike D.
 
 ## Limits and approval
 
-The product repository does not pin a `llama-server` release, and no server/runtime or
-model was installed for this preflight. Source-level support is not a substitute for
-loadability, latency, cache, or concurrency measurements. Spike C remains unchecked until
-the server version is pinned and the test matrix is run in an owner-approved environment.
+The product repository does not pin a `llama-server` release. The probe used an Ollama-
+bundled server and an existing base model, but had no real adapter artifact. Source-level
+support and an invalid-ID probe do not substitute for valid adapter selection, loadability,
+latency, cache, or concurrency measurements. Spike C remains unchecked until the server
+version is pinned and the full test matrix is run with real adapters.
 
 ## Official sources
 

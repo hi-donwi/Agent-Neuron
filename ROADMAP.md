@@ -11,8 +11,9 @@ Status: **N0 in progress.** The repository layout, the Makefile gates, CI, and
 ([result](docs/spikes/f-retrieval-preview.md)); A has a no-download desk preselection
 ([preselection and local Ollama smoke](docs/spikes/a-model-preselection.md)); B has a
 no-install training/export preflight ([result](docs/spikes/b-training-preflight.md)); C has
-a no-install engine API preflight ([result](docs/spikes/c-adapter-api-preflight.md)). The
-ADRs are Proposed until N0 measures the assumptions they rest on and the owner reviews them.
+a source preflight plus an empty-adapter live probe
+([result](docs/spikes/c-adapter-api-preflight.md)). The ADRs are Proposed until N0 measures
+the assumptions they rest on and the owner reviews them.
 
 | Milestone | Release | Theme | Status |
 |---|---|---|---|
