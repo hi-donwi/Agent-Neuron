@@ -1,4 +1,4 @@
-module github.com/hi-donwi/Agent-Neuron
+module github.com/hi-donwi/Donwi-Neuron
 
 go 1.26.0
 

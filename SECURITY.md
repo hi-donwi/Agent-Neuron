@@ -9,7 +9,7 @@ Please do **not** open a public issue for security problems. Report them private
 include the version, the affected command, and reproduction steps you can share safely.
 
 - Open a private security advisory:
-  `https://github.com/hi-donwi/Agent-Neuron/security/advisories/new`
+  `https://github.com/hi-donwi/Donwi-Neuron/security/advisories/new`
 
 You will receive an acknowledgement, and we will coordinate a fix and a disclosure
 timeline with you. Reporters are credited unless they prefer otherwise.

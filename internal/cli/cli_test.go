@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/hi-donwi/Agent-Neuron/internal/buildinfo"
+	"github.com/hi-donwi/Donwi-Neuron/internal/buildinfo"
 )
 
 func execute(t *testing.T, args ...string) (string, error) {

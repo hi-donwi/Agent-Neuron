@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-// Stamped by -ldflags "-X github.com/hi-donwi/Agent-Neuron/internal/buildinfo.Version=...".
+// Stamped by -ldflags "-X github.com/hi-donwi/Donwi-Neuron/internal/buildinfo.Version=...".
 var (
 	Version = ""
 	Commit  = ""

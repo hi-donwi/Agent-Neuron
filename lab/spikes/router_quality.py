@@ -6,7 +6,7 @@ keyword scoring, static embeddings, and a small transformer encoder. Method, dat
 results are written up in docs/spikes/d-router-quality.md.
 
     uv run --locked --group spikes python -I spikes/router_quality.py \
-        --skills-repo <clone of hi-donwi/Agent-Skills> [--download]
+        --skills-repo <clone of hi-donwi/Donwi-Skills> [--download]
 
 The clone may be at any commit and in any state: the pinned commit is extracted with
 `git archive` into the git-ignored cache, and its content hash is checked before use.
