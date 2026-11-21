@@ -1,4 +1,4 @@
-"""Read a skill catalogue in the Agent-Skills layout: skills/<name>/SKILL.md.
+"""Read a skill catalogue in the DONWI Skills layout: skills/<name>/SKILL.md.
 
 Each SKILL.md opens with front matter in a restricted, plain-text form: a single-line
 `name`, a single-line or folded `description`, and `pack` and `keywords` under

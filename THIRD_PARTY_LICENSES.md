@@ -1,6 +1,6 @@
 # Third-Party Licenses
 
-Agent-Neuron (`neuron`) is distributed under the Apache License 2.0. This file lists the
+DONWI Neuron (`neuron`) is distributed under the Apache License 2.0. This file lists the
 third-party Go modules compiled into the binary and their licences, as written in each
 module's own licence file at the version pinned in `go.mod`.
 

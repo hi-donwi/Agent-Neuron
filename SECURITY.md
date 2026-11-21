@@ -1,6 +1,6 @@
 # Security
 
-Agent-Neuron trains models from documents and traces and serves them on your machine, so
+DONWI Neuron trains models from documents and traces and serves them on your machine, so
 what a model may learn from, and what may leave the machine, are part of the product.
 
 ## Reporting a vulnerability
@@ -37,5 +37,5 @@ implemented and tested in the milestone named in the [roadmap](ROADMAP.md).
 
 ## Supply chain
 
-CI is planned to run the Agent-Secure gate at pinned, checksum-verified versions, with
+CI is planned to run the DONWI Secure gate at pinned, checksum-verified versions, with
 GitHub Actions pinned by commit SHA and Python dependencies locked.

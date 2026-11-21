@@ -1,7 +1,7 @@
 [project]
 name = "neuron-lab"
 version = "0.0.0"
-description = "Agent-Neuron lab: builds, trains, and evaluates neurons. Serving them needs no Python."
+description = "DONWI Neuron lab: builds, trains, and evaluates neurons. Serving them needs no Python."
 readme = "README.md"
 license = "Apache-2.0"
 requires-python = ">=3.12"

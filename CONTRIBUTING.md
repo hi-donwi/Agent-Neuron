@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for considering a contribution to Agent-Neuron. The project is in milestone N0,
+Thanks for considering a contribution to DONWI Neuron. The project is in milestone N0,
 so the most useful contributions right now are measurements for the N0 spikes and review
 of the decisions.
 
