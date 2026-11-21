@@ -8,7 +8,7 @@
     "author": "AI coding agent (Claude Fable 5.2), not yet reviewed by a human",
     "written": "2026-11-14",
     "derived_from": {
-      "repository": "https://github.com/hi-donwi/Donwi-Skills",
+      "repository": "https://github.com/hi-donwi/Agent-Skills",
       "commit": "70eaef555bf907b1a105c0f0e828300541637b50",
       "file": "tests/scenarios.json",
       "licence": "MIT"
