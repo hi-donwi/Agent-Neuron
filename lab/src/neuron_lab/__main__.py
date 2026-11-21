@@ -12,7 +12,7 @@ from neuron_lab import __version__
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="neuron-lab",
-        description="Agent-Neuron lab. Commands arrive with the milestones in ROADMAP.md.",
+        description="DONWI Neuron lab. Commands arrive with the milestones in ROADMAP.md.",
     )
     commands = parser.add_subparsers(dest="command", required=True)
     version = commands.add_parser("version", help="print lab build information")

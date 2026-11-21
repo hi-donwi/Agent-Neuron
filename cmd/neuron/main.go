@@ -1,4 +1,4 @@
-// Command neuron is the Agent-Neuron command-line tool.
+// Command neuron is the DONWI Neuron command-line tool.
 package main
 
 import "github.com/hi-donwi/Donwi-Neuron/internal/cli"

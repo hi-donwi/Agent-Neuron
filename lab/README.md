@@ -1,6 +1,6 @@
 # neuron-lab
 
-The lab is the Python side of Agent-Neuron: it will build datasets, train neurons, and
+The lab is the Python side of DONWI Neuron: it will build datasets, train neurons, and
 evaluate them. The `neuron` binary calls it through a versioned JSON contract
 ([ADR-0005](../docs/adr/0005-pure-go-runtime-python-lab-external-engine.md)). A machine
 that only serves neurons needs no Python and never installs this package.
@@ -41,7 +41,7 @@ cd lab && uv run --locked --group spikes python -I spikes/router_quality.py --sk
 ```
 
 runs Spike D, router quality. `<path>` is a clone of
-[Agent-Skills](https://github.com/hi-donwi/Donwi-Skills) at any commit; the script extracts
+[DONWI Skills](https://github.com/hi-donwi/Donwi-Skills) at any commit; the script extracts
 the commit it pins. `--download` fetches about 265 MB of models and data on the first run,
 each file at a pinned revision and checked against a pinned SHA-256; without it the script
 stops and lists what is missing.

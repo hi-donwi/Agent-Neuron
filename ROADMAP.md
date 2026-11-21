@@ -1,6 +1,6 @@
 # Roadmap
 
-Agent-Neuron is built in nine milestones. Each one ships something usable on its own and
+DONWI Neuron is built in nine milestones. Each one ships something usable on its own and
 ends with explicit exit criteria. Milestones are sequential; work inside a milestone is
 split into small commits, one concern each, with tests first for logic.
 
@@ -75,7 +75,7 @@ Deliverables:
 - [x] Layout: `cmd/neuron`, `internal/` (Go runtime), `lab/` (Python, managed by uv with a
   lock file), `evals/`, `docs/`. Makefile targets `check`, `static-check`, `lab-check`.
 - [x] CI: gofmt, `go mod tidy` check, vet, tests on Linux and macOS, static cross-compile for
-  five platforms, Python lint and tests under uv, the Agent-Secure secret and dependency
+  five platforms, Python lint and tests under uv, the DONWI Secure secret and dependency
   gate, one aggregate check.
 - [x] `neuron version` (`--json`).
 - [ ] Spike A, base model shortlist. [Preselection plus one local Ollama smoke](docs/spikes/a-model-preselection.md)
@@ -102,7 +102,7 @@ Deliverables:
   normal adapter changes; OpenAI chat pass-through, measured switch cost, and concurrency
   correctness still need a pinned-engine test.
 - [x] Spike D, router quality. Static embeddings with a linear head, against a keyword
-  baseline and a small transformer encoder, on the public Agent-Skills scenario set:
+  baseline and a small transformer encoder, on the public DONWI Skills scenario set:
   accuracy, abstention calibration on out-of-domain inputs, p95 latency, artifact size.
   Result: [docs/spikes/d-router-quality.md](docs/spikes/d-router-quality.md).
 - [x] Spike E, pure-Go inference parity. The static embedding lookup and centroid scorer
@@ -130,7 +130,7 @@ Deliverables:
   threshold per level.
 - `neuron route "<text>" [--json]`, `neuron packs ls|add|rm|verify`, `neuron doctor`
   (hardware, detected profile, store integrity; every failed check prints its fix).
-- First pack, `skills`: a router neuron over the public Agent-Skills catalogue, trained
+- First pack, `skills`: a router neuron over the public DONWI Skills catalogue, trained
   by a reference script that N2 turns into the pipeline.
 
 Tests: schema fixtures, valid and invalid; router fixtures for a direct request, a
@@ -194,7 +194,7 @@ Deliverables:
   rerank step when a pack ships one.
 - `neuron ask "<question>" --extractive`: the best supporting passages with `path:line`
   citations, and an explicit "not found in this pack".
-- Retrieval port: the built-in store, or an external provider such as an Agent-Brain
+- Retrieval port: the built-in store, or an external provider such as a DONWI Brain
   collection, behind one interface.
 - `evals/retrieval`: a golden set over public documentation; recall@5 and MRR.
 
@@ -227,7 +227,7 @@ Deliverables:
 - Token guard: a request over the context budget fails with an explicit error.
 - Escalation hook: off by default; when configured, an abstention may be forwarded to a
   named upstream, and the response says so.
-- Agent-Brain connection, documented and tested: a `local` account pointing at
+- DONWI Brain connection, documented and tested: a `local` account pointing at
   `neuron serve`.
 
 Tests: engine contract tests against a fake engine; composer budget tests; verifier
@@ -235,7 +235,7 @@ fixtures; authentication and Host header tests; abstention and escalation labell
 
 Exit criteria: on the `tiny` profile with CPU threads only, a request is routed,
 grounded, generated with an adapter, verified, and returned inside the N0 budget; two
-sub-domains alternate without reloading the base; Agent-Brain serves the endpoint through
+sub-domains alternate without reloading the base; DONWI Brain serves the endpoint through
 a local account.
 
 ## N5: Generative neurons: training
@@ -302,18 +302,18 @@ boundary.
 
 Deliverables:
 
-- Agent-Brain: packs as a catalogue and backend entry (needs an Agent-Brain ADR); opt-in,
+- DONWI Brain: packs as a catalogue and backend entry (needs a DONWI Brain ADR); opt-in,
   redacted trace export as a lab data source; reuse of its evaluation runner where it
   fits.
-- Agent-Skills: `design-a-neuron-spec` and `train-a-neuron` skills, so any coding agent
+- DONWI Skills: `design-a-neuron-spec` and `train-a-neuron` skills, so any coding agent
   can operate the lab from the command reference.
-- Agent-Control: a review surface for candidates (provenance, evaluation report,
+- DONWI Desk: a review surface for candidates (provenance, evaluation report,
   promote) over typed job endpoints. No endpoint executes arbitrary commands.
 - MCP: read-only inventory tools `list_packs`, `get_neuron`, `route_preview`.
-- Agent-Workspace: `ws route` may use the `skills` router neuron when it is installed.
+- DONWI Workspace: `ws route` may use the `skills` router neuron when it is installed.
 
 Exit criteria: a coding agent following the published skill trains and proposes a neuron
-from a spec; Agent-Control shows the candidate with its report; Agent-Brain serves a
+from a spec; DONWI Desk shows the candidate with its report; DONWI Brain serves a
 promoted pack to a client.
 
 ## N8: v1.0
@@ -351,7 +351,7 @@ machines; a new domain goes from spec to promoted pack by following the guide al
 
 Recorded so they are not lost; each needs its own evaluation before it is planned.
 
-- Agent-Brain importing the router as a Go package instead of calling it over HTTP.
+- DONWI Brain importing the router as a Go package instead of calling it over HTTP.
 - Vision and speech neurons.
 - Micro models trained from scratch for single structured tasks.
 - Speculative decoding with a smaller draft model.

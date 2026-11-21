@@ -1,4 +1,4 @@
-"""Agent-Neuron lab: builds, trains, and evaluates neurons."""
+"""DONWI Neuron lab: builds, trains, and evaluates neurons."""
 
 from importlib.metadata import version
 

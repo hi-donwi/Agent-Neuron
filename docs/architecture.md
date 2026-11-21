@@ -152,8 +152,8 @@ transformer embedder for retrieval; the full-text half of the hybrid compensates
 Spike F measures by how much. A pack may ship a rerank neuron when the measurement says
 it is worth the latency.
 
-Retrieval sits behind a port. The built-in store is one provider. An Agent-Brain
-collection is another, for machines where Agent-Brain already indexes the same documents.
+Retrieval sits behind a port. The built-in store is one provider. A DONWI Brain
+collection is another, for machines where DONWI Brain already indexes the same documents.
 
 ## 7. Generation
 
@@ -276,9 +276,9 @@ Budgets are part of every manifest and every job
 
 Memory on the `tiny` profile, as a design budget: runtime and router under 100 MB, one
 knowledge pack memory-mapped, one base at four bits with a 2k context, and loaded
-adapters at tens of megabytes each. For scale, Agent-Brain measured a 0.6B model at four
+adapters at tens of megabytes each. For scale, DONWI Brain measured a 0.6B model at four
 bits at about 800 MB resident with a 4k context
-([Agent-Brain ADR-0002](https://github.com/hi-donwi/Donwi-Brain/blob/main/docs/adr/0002-orchestrate-existing-inference-backends.md)).
+([DONWI Brain ADR-0002](https://github.com/hi-donwi/Donwi-Brain/blob/main/docs/adr/0002-orchestrate-existing-inference-backends.md)).
 
 ## 12. Draft formats
 
@@ -359,9 +359,9 @@ gates:
 
 ## 14. Fit with the suite
 
-Agent-Neuron is a backend, not a second gateway
+DONWI Neuron is a backend, not a second gateway
 ([ADR-0001](adr/0001-separate-repository-beside-agent-brain.md)). It has no provider
-accounts, no skills runtime, no agent loop, and no console. Agent-Brain stays the one
+accounts, no skills runtime, no agent loop, and no console. DONWI Brain stays the one
 endpoint clients use, and reaches `neuron serve` as a local account. On a bare low-end
 device with nothing else installed, `neuron serve` alone is enough.
 
