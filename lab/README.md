@@ -41,7 +41,7 @@ cd lab && uv run --locked --group spikes python -I spikes/router_quality.py --sk
 ```
 
 runs Spike D, router quality. `<path>` is a clone of
-[Agent-Skills](https://github.com/hi-donwi/Agent-Skills) at any commit; the script extracts
+[Agent-Skills](https://github.com/hi-donwi/Donwi-Skills) at any commit; the script extracts
 the commit it pins. `--download` fetches about 265 MB of models and data on the first run,
 each file at a pinned revision and checked against a pinned SHA-256; without it the script
 stops and lists what is missing.

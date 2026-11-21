@@ -73,7 +73,7 @@ under "When to use" in its `SKILL.md`: 1229 short texts for 68 skills.
 
 | Data | Source and pin | Licence | Role |
 |---|---|---|---|
-| Skill catalogue and public scenarios | [Agent-Skills](https://github.com/hi-donwi/Agent-Skills) at commit `70eaef555bf907b1a105c0f0e828300541637b50` | MIT | 68 skills; 89 scenario queries over 41 of them |
+| Skill catalogue and public scenarios | [Agent-Skills](https://github.com/hi-donwi/Donwi-Skills) at commit `70eaef555bf907b1a105c0f0e828300541637b50` | MIT | 68 skills; 89 scenario queries over 41 of them |
 | Paraphrase set | [`evals/router/skills-paraphrase-v1.json`](../../evals/router/skills-paraphrase-v1.json), SHA-256 `162a9f50...0714` | Apache-2.0 | 89 queries, one per public scenario |
 | Out-of-domain queries | [CLINC150](https://github.com/clinc/oos-eval) `data/data_full.json` at commit `828f8093932c8fe6ca7936c3d2e52903b1c523de` | CC BY 3.0 | 3100 queries to set the threshold, 5500 to test it |
 | `potion-base-2M` | `minishlab/potion-base-2M` at `389b9f64be5aa4ae7a6bc6fe95ef20ce485ae5da` | MIT | Static encoder |

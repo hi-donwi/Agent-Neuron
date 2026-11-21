@@ -1,11 +1,11 @@
-# Agent-Neuron
+# DONWI Neuron
 
 Tiny specialist models that run well on a CPU, a routing core that picks the right one,
 and a lab that trains new ones on the same small machine.
 
-Agent-Neuron (`neuron`) is the model layer of the Agent Workspace suite.
-[Agent-Brain](https://github.com/hi-donwi/Agent-Brain) is the gateway in front of models;
-Agent-Neuron builds, packages, routes, and serves the small models themselves.
+DONWI Neuron (`neuron`) is the model layer of the DONWI Agent Suite.
+[DONWI Brain](https://github.com/hi-donwi/Donwi-Brain) is the gateway in front of models;
+DONWI Neuron builds, packages, routes, and serves the small models themselves.
 
 > **Status: milestone N0 in progress.** The repository builds and gates itself, and
 > `neuron version` is the only command that exists; the others shown below are planned.
@@ -19,7 +19,7 @@ little and reasons weakly. Asked to be a general assistant, it disappoints. Give
 narrow job, the facts it needs, and a fixed output shape, it is often good enough, and it
 answers without a GPU.
 
-Agent-Neuron is built on that observation. It does not try to make one small model smart.
+DONWI Neuron is built on that observation. It does not try to make one small model smart.
 It splits the work into small parts and gives each part to the cheapest thing that can do
 it:
 
@@ -125,11 +125,11 @@ an 8 GB machine. Anything larger is trained elsewhere and imported as an artifac
 
 | Repository | Relationship |
 |---|---|
-| [Agent-Brain](https://github.com/hi-donwi/Agent-Brain) | Gateway, accounts, and retrieval platform. Reaches `neuron serve` as a local account over the OpenAI-compatible API; can act as the teacher endpoint; its traces can become an opt-in data source ([ADR-0001](docs/adr/0001-separate-repository-beside-agent-brain.md)) |
-| [Agent-Control](https://github.com/hi-donwi/Agent-Control) | Agent host and operator UI. Later: a review surface for candidates |
-| [Agent-Skills](https://github.com/hi-donwi/Agent-Skills) | First router training set (public skill scenarios); later carries the skills that teach an agent to operate the lab |
+| [DONWI Brain](https://github.com/hi-donwi/Donwi-Brain) | Gateway, accounts, and retrieval platform. Reaches `neuron serve` as a local account over the OpenAI-compatible API; can act as the teacher endpoint; its traces can become an opt-in data source ([ADR-0001](docs/adr/0001-separate-repository-beside-agent-brain.md)) |
+| [DONWI Desk](https://github.com/hi-donwi/Donwi-Desk) | Agent host and operator UI. Later: a review surface for candidates |
+| [DONWI Skills](https://github.com/hi-donwi/Donwi-Skills) | First router training set (public skill scenarios); later carries the skills that teach an agent to operate the lab |
 | [UIDL-Runtime](https://github.com/hi-donwi/UIDL-Runtime), [Kerangka](https://github.com/hi-donwi/Kerangka) | First generative domains: schema-validated JSON documents, where the validator is the judge |
-| [OPS-Toolkit](https://github.com/hi-donwi/OPS-Toolkit), [DBA-Toolkit](https://github.com/hi-donwi/DBA-Toolkit) | Public rule catalogues as a knowledge pack for explaining findings |
+| [DONWI OpsKit](https://github.com/hi-donwi/Donwi-OpsKit), [DONWI DBAKit](https://github.com/hi-donwi/Donwi-DBAKit) | Public rule catalogues as a knowledge pack for explaining findings |
 
 ## What it will not do
 
@@ -167,6 +167,6 @@ serves neurons never needs it.
 ## Licence
 
 Apache-2.0. See [LICENSE](LICENSE), [NOTICE](NOTICE), and
-[THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md). Agent-Neuron does not distribute
+[THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md). DONWI Neuron does not distribute
 third-party model weights in this repository; base models keep their publishers' licences,
 recorded in every neuron manifest.

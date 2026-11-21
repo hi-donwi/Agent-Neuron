@@ -7,7 +7,7 @@ file; the old one stays.
 ## skills-paraphrase-v1.json
 
 Eighty-nine routing queries over the public
-[Agent-Skills](https://github.com/hi-donwi/Agent-Skills) catalogue, one for each scenario
+[Agent-Skills](https://github.com/hi-donwi/Donwi-Skills) catalogue, one for each scenario
 in that repository's `tests/scenarios.json` at commit
 `70eaef555bf907b1a105c0f0e828300541637b50`. Each entry keeps the `id`, `expected_skill`,
 and `pack` of the scenario it paraphrases, so the two sets line up one to one.

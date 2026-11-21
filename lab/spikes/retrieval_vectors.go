@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/hi-donwi/Agent-Neuron/internal/router/static"
+	"github.com/hi-donwi/Donwi-Neuron/internal/router/static"
 )
 
 type retrievalRequest struct {

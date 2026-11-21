@@ -278,7 +278,7 @@ Memory on the `tiny` profile, as a design budget: runtime and router under 100 M
 knowledge pack memory-mapped, one base at four bits with a 2k context, and loaded
 adapters at tens of megabytes each. For scale, Agent-Brain measured a 0.6B model at four
 bits at about 800 MB resident with a 4k context
-([Agent-Brain ADR-0002](https://github.com/hi-donwi/Agent-Brain/blob/main/docs/adr/0002-orchestrate-existing-inference-backends.md)).
+([Agent-Brain ADR-0002](https://github.com/hi-donwi/Donwi-Brain/blob/main/docs/adr/0002-orchestrate-existing-inference-backends.md)).
 
 ## 12. Draft formats
 
